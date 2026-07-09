@@ -33,7 +33,7 @@ services:
     env_file: env/phpfpm.env
 
   db:
-    image: mariadb:10.4.3
+    image: mariadb:10.4.33
     platform: *amd64-platform
     command:
       --max_allowed_packet=64M
