@@ -66,15 +66,28 @@ Clone the Magento project into `src`:
 git clone <project-repository-url> src
 ```
 
-Start the containers:
+Start the containers without dev mounts:
 
 ```bash
-bin/start
+bin/start --no-dev
+```
+
+Copy the cloned Magento source into the Docker volume:
+
+```bash
+bin/copytocontainer --all
 ```
 
 Install Composer dependencies inside the PHP container:
 
 ```bash
+bin/composer install
+```
+
+If Composer reports `Composer could not find a composer.json file in /var/www/html`, the source was not copied into the container. Run:
+
+```bash
+bin/copytocontainer --all
 bin/composer install
 ```
 
